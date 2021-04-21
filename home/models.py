@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Movie(models.Model):
+class MovieDetails(models.Model):
 
     backdrop_path = models.TextField(null=True)
     budget = models.IntegerField(null=True)
@@ -18,8 +18,7 @@ class Movie(models.Model):
     revenue = models.IntegerField(null=True)
     runtime = models.IntegerField(null=True)
     spoken_languages = models.ManyToManyField('home.SpokenLanguage')
-    status = models.ForeignKey('home.Status',
-                                on_delete=models.CASCADE)
+    status = models.TextField()
     tagline = models.TextField(null=True)
     title = models.TextField()
     video = models.BooleanField()
@@ -60,16 +59,10 @@ class Gender(models.Model):
 
 class AlternativeTitle(models.Model):
 
-    movie_id = models.ForeignKey('home.Movie', on_delete=models.CASCADE)
+    movie_id = models.ForeignKey('home.MovieDetails', on_delete=models.CASCADE)
     iso_3166_1 = models.TextField()
     title = models.TextField(max_length=200)
     type = models.TextField(max_length=200)
-
-
-class Status(models.Model):
-
-    id = models.AutoField(primary_key=True)
-    title = models.TextField(max_length=200)
 
 
 class SpokenLanguage(models.Model):
