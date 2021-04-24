@@ -4,7 +4,7 @@ from django.db import models
 class MovieDetails(models.Model):
 
     backdrop_path = models.TextField(null=True)
-    budget = models.IntegerField(null=True)
+    budget = models.BigIntegerField(null=True)
     genres = models.ManyToManyField('home.Genres')
     id = models.AutoField(primary_key=True)
     imdb_id = models.TextField(max_length=9, null=True)
@@ -15,7 +15,7 @@ class MovieDetails(models.Model):
     poster_path = models.TextField(null=True)
     production_companies = models.ManyToManyField('home.ProductionCompany')
     release_date = models.DateField(null=True)
-    revenue = models.IntegerField(null=True)
+    revenue = models.BigIntegerField(null=True)
     runtime = models.IntegerField(null=True)
     spoken_languages = models.ManyToManyField('home.SpokenLanguage')
     status = models.TextField()
@@ -28,7 +28,7 @@ class MovieDetails(models.Model):
     crew = models.ManyToManyField('home.Crew')
 
 
-class Person(models.Model):
+class People(models.Model):
 
     birthday = models.DateField(null=True)
     known_for_department = models.TextField(null=True)
@@ -36,8 +36,7 @@ class Person(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.TextField()
     also_known_as = models.TextField(null=True)
-    gender = models.ForeignKey('home.Gender',
-                                on_delete=models.CASCADE)
+    gender = models.IntegerField()
     biography = models.TextField(null=True)
     popularity = models.IntegerField()
     place_of_birth = models.TextField(null=True)
@@ -49,20 +48,6 @@ class Genres(models.Model):
 
     id = models.AutoField(primary_key=True)
     title = models.TextField(max_length=200)
-
-
-class Gender(models.Model):
-
-    id = models.AutoField(primary_key=True)
-    title = models.TextField(max_length=200)
-
-
-class AlternativeTitle(models.Model):
-
-    movie_id = models.ForeignKey('home.MovieDetails', on_delete=models.CASCADE)
-    iso_3166_1 = models.TextField()
-    title = models.TextField(max_length=200)
-    type = models.TextField(max_length=200)
 
 
 class SpokenLanguage(models.Model):
@@ -84,18 +69,18 @@ class Cast(models.Model):
 
     id = models.AutoField(primary_key=True)
     character = models.TextField()
-    person = models.ForeignKey('home.Person',
-                                on_delete=models.CASCADE)
+    person = models.ForeignKey('home.People',
+                                  on_delete=models.CASCADE)
     order = models.IntegerField()  # for order to list cast
 
 
 class Crew(models.Model):
 
     id = models.AutoField(primary_key=True)
-    department = models.IntegerField()
-    person = models.ForeignKey('home.Person',
-                                on_delete=models.CASCADE)
-    job = models.IntegerField()
+    department = models.TextField()
+    person = models.ForeignKey('home.People',
+                                  on_delete=models.CASCADE)
+    job = models.TextField()
 
 
 
