@@ -70,7 +70,7 @@ class Cast(models.Model):
     id = models.AutoField(primary_key=True)
     character = models.TextField()
     person = models.ForeignKey('home.People',
-                                  on_delete=models.CASCADE)
+                               on_delete=models.CASCADE)
     order = models.IntegerField()  # for order to list cast
 
 
@@ -79,8 +79,5 @@ class Crew(models.Model):
     id = models.AutoField(primary_key=True)
     department = models.TextField()
     person = models.ForeignKey('home.People',
-                                  on_delete=models.CASCADE)
+                               on_delete=models.CASCADE)
     job = models.TextField()
-
-
-

@@ -1,11 +1,7 @@
 import os
-import urllib
-from datetime import date, timedelta
 
 from django.views import View
-from tmdbv3api import TMDb, Movie, Configuration, Person, Search, Discover
-
-from django.shortcuts import render
+from tmdbv3api import TMDb
 
 
 class MainView(View):

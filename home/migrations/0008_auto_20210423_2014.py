@@ -22,11 +22,15 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='cast',
             name='person',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='home.people'),
+            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, # noqa
+                                       primary_key=True, serialize=False,
+                                       to='home.people'),
         ),
         migrations.AlterField(
             model_name='crew',
             name='person',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='home.people'),
+            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, # noqa
+                                       primary_key=True, serialize=False,
+                                       to='home.people'),
         ),
     ]

@@ -17,7 +17,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('department', models.TextField()),
                 ('job', models.TextField()),
-                ('person', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.people')),
+                ('person', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, # noqa
+                                             to='home.people')),
             ],
         ),
         migrations.CreateModel(
@@ -26,7 +27,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('character', models.TextField()),
                 ('order', models.IntegerField()),
-                ('person', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.people')),
+                ('person', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, # noqa
+                                             to='home.people')),
             ],
         ),
         migrations.AddField(

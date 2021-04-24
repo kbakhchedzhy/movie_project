@@ -24,7 +24,9 @@ class Migration(migrations.Migration):
             name='Credits',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('cast', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='home.cast')),
+                ('cast', models.ForeignKey(null=True,
+                                           on_delete=django.db.models.deletion.SET_NULL, # noqa
+                                           to='home.cast')),
             ],
         ),
         migrations.CreateModel(
@@ -70,7 +72,8 @@ class Migration(migrations.Migration):
                 ('place_of_birth', models.TextField(null=True)),
                 ('popularity', models.IntegerField()),
                 ('profile_path', models.TextField(null=True)),
-                ('gender', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.gender')),
+                ('gender', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, # noqa
+                                             to='home.gender')),
             ],
         ),
         migrations.CreateModel(
@@ -92,10 +95,13 @@ class Migration(migrations.Migration):
                 ('video', models.BooleanField()),
                 ('vote_average', models.IntegerField()),
                 ('vote_count', models.IntegerField()),
-                ('cast', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.credits')),
+                ('cast', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, # noqa
+                                           to='home.credits')),
                 ('genres', models.ManyToManyField(to='home.Genres')),
-                ('production_companies', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.productioncompany')),
-                ('status', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.status')),
+                ('production_companies', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, # noqa
+                                                           to='home.productioncompany')), # noqa
+                ('status', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, # noqa
+                                             to='home.status')),
             ],
         ),
         migrations.CreateModel(
@@ -104,17 +110,20 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('department', models.IntegerField()),
                 ('job', models.IntegerField()),
-                ('person', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.person')),
+                ('person', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, # noqa
+                                             to='home.person')),
             ],
         ),
         migrations.AddField(
             model_name='credits',
             name='crew',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='home.crew'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, # noqa
+                                    to='home.crew'),
         ),
         migrations.AddField(
             model_name='cast',
             name='person',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.person'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, # noqa
+                                    to='home.person'),
         ),
     ]

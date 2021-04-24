@@ -14,7 +14,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AlternativeTitle',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True,
+                                        serialize=False,
+                                        verbose_name='ID')),
                 ('iso_3166_1', models.TextField()),
                 ('title', models.TextField(max_length=200)),
                 ('type', models.TextField(max_length=200)),
@@ -72,7 +75,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='alternativetitle',
             name='movie_id',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='home.movie'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, # noqa
+                                    to='home.movie'),
         ),
         migrations.AddField(
             model_name='movie',
