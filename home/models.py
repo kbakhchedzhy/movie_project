@@ -67,7 +67,6 @@ class ProductionCompany(models.Model):
 
 class Cast(models.Model):
 
-    # id = models.AutoField(primary_key=True)
     character = models.TextField()
     person = models.ForeignKey('home.People',
                                on_delete=models.CASCADE)
@@ -76,7 +75,6 @@ class Cast(models.Model):
 
 class Crew(models.Model):
 
-    # id = models.AutoField(primary_key=True)
     department = models.TextField()
     person = models.ForeignKey('home.People',
                                on_delete=models.CASCADE)
